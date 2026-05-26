@@ -36,13 +36,13 @@
     "id": 3,
     "title": "Fakeflix Vue + API IMDB",
     "slug": "fakeflix-vue-api-imdb",
-    "cover": "/images/projects/Fakeflix Vue + API IMDB/Fakeflix-1.PNG",
+    "cover": "/images/projects/FakeflixVue/Fakeflix-1.PNG",
     "body": "Fakeflix è stato un progetto orientato alla fruizione dati, realizzato con HTML, CSS e JavaScript, e integrato con l’API di IMDB per recuperare informazioni dinamiche sul catalogo filmico. L’obiettivo era creare un’esperienza di streaming fluida, con contenuti informativi completi e una UI capace di rendere immediata la navigazione tra film, descrizioni e dettagli correlati. Il progetto ha rafforzato la mia capacità di lavorare con API esterne e trasformare dati in una UI leggibile e curata.",
     "gallery": [
-      "/images/projects/Fakeflix Vue + API IMDB/Fakeflix-1.PNG",
-      "/images/projects/Fakeflix Vue + API IMDB/Fakeflix-2.PNG",
-      "/images/projects/Fakeflix Vue + API IMDB/Fakeflix-3.PNG",
-      "/images/projects/Fakeflix Vue + API IMDB/Fakeflix-4.PNG"
+      "/images/projects/FakeflixVue/Fakeflix-1.PNG",
+      "/images/projects/FakeflixVue/Fakeflix-2.PNG",
+      "/images/projects/FakeflixVue/Fakeflix-3.PNG",
+      "/images/projects/FakeflixVue/Fakeflix-4.PNG"
     ]
   },
   {
