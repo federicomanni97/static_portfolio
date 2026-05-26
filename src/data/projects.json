@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "title": "RPG Project",
+    "slug": "rpg-project",
+    "cover": "/images/projects/RPG-Project/RPG-Project-1.PNG",
+    "body": "Booleans Legacy è stato un progetto di forte impatto visivo e interattivo, ispirato a Elden Ring e sviluppato con Laravel e Vue. L’obiettivo era creare un’esperienza di gioco in cui i giocatori potessero costruire una squadra di personaggi dotati di caratteristiche personalizzabili, come attacco, salute e difesa, e farli combattere in una struttura di gioco semplice e immediata. Il progetto ha permesso di lavorare su logica di gioco, gestione dello stato e una UI pensata per rendere il prodotto coinvolgente e intuitivo.",
+    "gallery": [
+      "/images/projects/RPG-Project/RPG-Project-1.PNG",
+      "/images/projects/RPG-Project/RPG-Project-2.PNG",
+      "/images/projects/RPG-Project/RPG-Project-2.5.PNG",
+      "/images/projects/RPG-Project/RPG-Project-3.PNG",
+      "/images/projects/RPG-Project/RPG-Project-4.PNG",
+      "/images/projects/RPG-Project/RPG-Project-5.PNG",
+      "/images/projects/RPG-Project/RPG-Project-6.PNG",
+      "/images/projects/RPG-Project/RPG-Project-7.PNG",
+      "/images/projects/RPG-Project/RPG-Project-8.PNG",
+      "/images/projects/RPG-Project/RPG-Project-9.PNG"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "BoolBnb",
+    "slug": "boolbnb",
+    "cover": "/images/projects/BoolBnb/BoolBnb-1.PNG",
+    "body": "Boolbnb è stato sviluppato come una replica funzionale di un marketplace immobiliare, con un focus particolare sull’esperienza utente e sulla gestione del catalogo proprietà. Oltre alla parte pubblica, ho progettato e implementato un gestionale per i venditori, permettendo di gestire gli appartamenti in modo strutturato e intuitivo. Il progetto include anche flussi di contatto diretti tra venditore e affittuario, evidenziando la capacità di integrare logica business e interazioni reali in un ambiente web completo.",
+    "gallery": [
+      "/images/projects/BoolBnb/BoolBnb-1.PNG",
+      "/images/projects/BoolBnb/BoolBnb-3.PNG",
+      "/images/projects/BoolBnb/BoolBnb-6.PNG",
+      "/images/projects/BoolBnb/BoolBnb-4.PNG",
+      "/images/projects/BoolBnb/BoolBnb-5.PNG"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Fakeflix Vue + API IMDB",
+    "slug": "fakeflix-vue-api-imdb",
+    "cover": "/images/projects/Fakeflix Vue + API IMDB/Fakeflix-1.PNG",
+    "body": "Fakeflix è stato un progetto orientato alla fruizione dati, realizzato con HTML, CSS e JavaScript, e integrato con l’API di IMDB per recuperare informazioni dinamiche sul catalogo filmico. L’obiettivo era creare un’esperienza di streaming fluida, con contenuti informativi completi e una UI capace di rendere immediata la navigazione tra film, descrizioni e dettagli correlati. Il progetto ha rafforzato la mia capacità di lavorare con API esterne e trasformare dati in una UI leggibile e curata.",
+    "gallery": [
+      "/images/projects/Fakeflix Vue + API IMDB/Fakeflix-1.PNG",
+      "/images/projects/Fakeflix Vue + API IMDB/Fakeflix-2.PNG",
+      "/images/projects/Fakeflix Vue + API IMDB/Fakeflix-3.PNG",
+      "/images/projects/Fakeflix Vue + API IMDB/Fakeflix-4.PNG"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Netflix Tailwind",
+    "slug": "netflix-clone",
+    "cover": "/images/projects/Netflix-Tailwind/Netflix-1.PNG",
+    "body": "Netflix Tailwind è stato il mio primo approccio concreto all’utilizzo di Tailwind CSS, sviluppato con HTML, CSS e JavaScript. Il progetto mi ha permesso di sperimentare in modo diretto la rapidità e la flessibilità del framework, soprattutto nella gestione dei layout e nella personalizzazione dei componenti. È stato un passaggio importante nella mia crescita tecnica, perché mi ha mostrato il valore di una workflow più performante e modulare nella costruzione di interfacce moderne.",
+    "gallery": [
+      "/images/projects/Netflix-Tailwind/Netflix-1.PNG",
+      "/images/projects/Netflix-Tailwind/Netflix-2.PNG",
+      "/images/projects/Netflix-Tailwind/Netflix-3.PNG"
+    ]
+  }
+]
