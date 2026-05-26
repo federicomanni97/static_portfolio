@@ -173,84 +173,84 @@ export default {
     const logos = [
       {
         title: "HTML",
-        img: "/public/images/html-logo.png",
+        img: "/images/html-logo.png",
         year: "Anno - 2024",
         description:
           "Acquisita padronanza nella strutturazione semantica di pagine web, con particolare attenzione all’accessibilità e alla compatibilità cross-browser. Capacità di creare markup pulito, scalabile e ottimizzato per layout responsive.",
       },
       {
         title: "CSS / SCSS",
-        img: "/public/images/css-logo.png",
+        img: "/images/css-logo.png",
         year: "2024",
         description:
           "Competenze avanzate nella progettazione di interfacce responsive con CSS e preprocessori SCSS. Implementazione di design modulari, animazioni moderne e gestione dello stile secondo principi DRY (Don't Repeat Yourself).",
       },
       {
         title: "Bootstrap",
-        img: "/public/images/bootstrap-logo.png",
+        img: "/images/bootstrap-logo.png",
         year: "2024",
         description:
           "Esperienza nell’utilizzo del framework Bootstrap per la creazione rapida di UI responsive. Personalizzazione di componenti, layout mobile-first e utilizzo di classi utility per una prototipazione efficiente.",
       },
       {
         title: "JavaScript",
-        img: "/public/images/javascript-logo.png",
+        img: "/images/javascript-logo.png",
         year: "2024",
         description:
           "Competenze solide nello sviluppo interattivo lato client. Gestione eventi, manipolazione DOM, utilizzo di fetch API per chiamate asincrone e introduzione alla programmazione funzionale e orientata agli oggetti.",
       },
       {
         title: "Vue.js",
-        img: "/public/images/vue-logo.png",
+        img: "/images/vue-logo.png",
         year: "2024",
         description:
           "Esperienza nello sviluppo front-end con Vue.js: componenti riutilizzabili, binding reattivo, gestione dello stato e integrazione con API REST. Utilizzo di Vue Router e Vuex per progetti scalabili.",
       },
       {
         title: "Laravel",
-        img: "/public/images/laravel-logo.png",
+        img: "/images/laravel-logo.png",
         year: "2024",
         description:
           "Utilizzo del framework Laravel per lo sviluppo backend in PHP. Implementazione di routing, middleware, gestione delle autenticazioni e manipolazione dei dati tramite Eloquent ORM.",
       },
       {
         title: "PHP",
-        img: "/public/images/php-logo.png",
+        img: "/images/php-logo.png",
         year: "2024",
         description:
           "Sviluppo di applicazioni dinamiche lato server. Conoscenza delle buone pratiche OOP, gestione delle sessioni, validazione dati e integrazione con database MySQL.",
       },
       {
         title: "MySQL",
-        img: "/public/images/mysql-logo-pure.svg",
+        img: "/images/mysql-logo-pure.svg",
         year: "2024",
         description:
           "Introduzione alla programmazione con Python. Fondamenti OOP, strutture dati, gestione file, librerie base e creazione di script per l'automazione.",
       },
       {
         title: "Github",
-        img: "/public/images/github-logo.png",
+        img: "/images/github-logo.png",
         year: "2024",
         description:
           "Gestione del versionamento del codice con Git e GitHub. Collaborazione in team tramite pull request, gestione dei rami (branching), risoluzione conflitti e documentazione dei progetti.",
       },
       {
         title: "Python",
-        img: "/public/images/python-logo.svg",
+        img: "/images/python-logo.svg",
         year: "2025",
         description:
           "Introduzione alla programmazione con Python. Fondamenti OOP, strutture dati, gestione file, librerie base e creazione di script per l'automazione.",
       },
       {
         title: "OpenAi",
-        img: "/public/images/openai.svg",
+        img: "/images/openai.svg",
         year: "2025",
         description:
           "Utilizzo delle API di OpenAI per integrare modelli di intelligenza artificiale all’interno di applicazioni. Generazione di contenuti, automazione di flussi e utilizzo di linguaggi naturali per l'interazione utente-AI.",
       },
       {
         title: "React",
-        img: "/public/images/react-logo.svg",
+        img: "/images/react-logo.svg",
         year: "In Corso",
         description:
           "Studio della libreria React per lo sviluppo di interfacce utente interattive. Gestione dello stato con hook, JSX, componenti riutilizzabili e ciclo di vita dei componenti.",
@@ -286,9 +286,10 @@ export default {
       return projectList.map((project) => ({
         ...project,
         body: project.body || project.description || 'Scopri il progetto attraverso la gallery e il link ufficiale.',
+        cover: encodeURI(project.cover || ''),
         gallery: Array.isArray(project.gallery) && project.gallery.length
-          ? project.gallery
-          : [project.cover].filter(Boolean),
+          ? project.gallery.map((img) => encodeURI(img))
+          : [project.cover].filter(Boolean).map((img) => encodeURI(img)),
         technologies: Array.isArray(project.technologies) ? project.technologies : [],
         meta: projectMetaMap[project.title] || [],
       }));
