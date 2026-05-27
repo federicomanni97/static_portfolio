@@ -5,16 +5,16 @@
         <!-- Sinistra -->
         <div class="d-flex align-items-center gap-4 ">
           <div class="d-flex flex-column">
-            <span class="text-secondary small-font text-uppercase">Local Time</span>
+            <span class="text-secondary small-font text-uppercase">Ora Locale</span>
             <small class="text-black">{{ currentTime }}</small>
           </div>
-          <div class="d-flex flex-column">
+          <!-- <div class="d-flex flex-column">
             <span class="text-secondary small-font text-uppercase">Version:</span>
             <small class="text-black">2025 Edition</small>
-          </div>
+          </div> -->
           <div class="d-flex flex-column">
             <span class="text-secondary small-font text-uppercase">City</span>
-            <small class="text-black">Rome, Italy</small>
+            <small class="text-black">Roma, Italia</small>
           </div>
         </div>
 

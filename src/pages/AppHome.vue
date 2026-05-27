@@ -712,7 +712,7 @@ export default {
   border-radius: 32px;
   background:
     radial-gradient(circle at top left, rgba(249, 115, 22, 0.12), transparent 28%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98));
+    linear-gradient(180deg, rgb(255, 255, 255), rgb(255, 255, 255));
   border: 1px solid rgba(15, 23, 42, 0.06);
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
 }

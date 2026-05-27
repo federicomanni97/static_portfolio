@@ -5,12 +5,12 @@
         <div class="header-meta d-flex align-items-center gap-4">
           <img class="logo-header" src="../assets/images/fm-logo-no-bg.png" alt="">
           <div class="d-flex flex-column align-items-center">
-            <span class="text-secondary">Local Time</span>
+            <span class="text-secondary">Ora Locale</span>
             <small class="text-black">{{ currentTime }}</small>
           </div>
           <div class="d-flex flex-column align-items-center">
-            <span class="text-secondary">City</span>
-            <small class="text-black">Rome, Italy</small>
+            <span class="text-secondary">Città</span>
+            <small class="text-black">Roma, Italia</small>
           </div>
         </div>
 
