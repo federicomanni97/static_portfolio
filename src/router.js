@@ -5,6 +5,8 @@ import SingleProject from "./pages/SingleProject.vue"
 import NotFound from "./pages/NotFound.vue"
 import AppContact from "./pages/AppContact.vue";
 
+// Configurazione del router: ogni path corrisponde a una pagina principale
+// dell'applicazione e viene mappato su un componente Vue specifico.
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [

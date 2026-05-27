@@ -1,4 +1,5 @@
 <template>
+    <!-- Single project: recupera progetto via API `store.apiUrl` usando `this.$route.params.slug`; immagini risolte con `store.imgPath` -->
     <div class="text-center bg-dark h-100 d-flex flex-column align-items-center">
         <h1 class="text-uppercase text-danger py-4 fw-bold"> {{project.title}} </h1>
         <img :src="`${store.imgPath}${project.image}`" :alt="project.title" class="imgwidth">
@@ -21,17 +22,17 @@
             }
         },
         methods:{
-            getProjectData(){
-                console.log(this.$route);
-                axios.get(`${this.store.apiUrl}/projects/${this.$route.params.slug}`).then((res)=>{
-                    console.log(res.data);
-                    if(res.data.results){
-                       this.project = res.data.results 
-                    } else {
-                        this.$router.push({name: 'not-found'})
-                    }
-                })
-            }
+                // Fetch: chiama API per ottenere i dati del progetto corrente (slug route param).
+                // Se la risposta non contiene `results` reindirizza a `not-found`.
+                getProjectData(){
+                    axios.get(`${this.store.apiUrl}/projects/${this.$route.params.slug}`).then((res)=>{
+                        if(res.data.results){
+                           this.project = res.data.results 
+                        } else {
+                            this.$router.push({name: 'not-found'})
+                        }
+                    })
+                }
         },
         created(){
             this.getProjectData();

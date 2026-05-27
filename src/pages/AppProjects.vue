@@ -1,4 +1,5 @@
 <template>
+  <!-- Projects page: lista progetti dal `store.projects`, mostra cover e link a `single-project` (router param: slug) -->
   <div>
     <main class="container">
 
@@ -53,8 +54,8 @@ export default {
   },
 
   created() {
-    // se usi JSON statico lo puoi caricare qui oppure già nello store
-    // store.projects = projectsData
+    // Nota: i progetti vengono presi dallo `store` (potrebbe essere precaricato da JSON o API)
+    // Se fosse necessario caricarli qui, farlo una volta (es. store.projects = projectsData)
   }
 }
 </script>

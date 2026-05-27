@@ -1,9 +1,15 @@
 <template>
+  <!--
+    App.vue agisce da wrapper globale dell'applicazione:
+    - AppHeader è sempre visibile
+    - router-view rende la pagina corrispondente alla route attiva
+    - FooterComponent chiude il layout comune
+  -->
   <div class="">
     <div class="">
       <AppHeader/>
     </div>
-    
+
     <!-- router view caricherà le pagine richieste -->
     <router-view></router-view>
     <FooterComponent/>

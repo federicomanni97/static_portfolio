@@ -1,5 +1,7 @@
 <template>
+  <!-- Home: sezioni principali — Hero, Hard Skills, Projects, Contact -->
   <div class="container d-flex flex-column justify-content-center align-items-center ">
+    <!-- Hero: 'About Me' — parallax foto (requestAnimationFrame), hover-trigger, badge -->
     <div class="position-relative about-section my-5 hover-trigger reveal">
       <div class="d-flex flex-column align-items-center">
         <span class="hero-badge">Frontend Developer • Vue • React • UI</span>
@@ -18,6 +20,7 @@
       </div>
     </div>
 
+    <!-- Hard Skills: render da array `logos` (img, title, year, description); layout con Bootstrap + SCSS -->
     <div class="d-flex justify-content-center w-100">
       <div class="row hard-skills-section w-100 reveal" style="max-width: 1200px">
         <div class="col-12 col-md-6 text-md-end text-start mb-4 mb-md-0 pt-5 border_skills">
@@ -46,6 +49,7 @@
       </div>
     </div>
 
+    <!-- Progetti: dati importati da `@/data/projects.json`, normalizzati in `normalizeProjects()`; gallery duplicata per marquee CSS -->
     <section class="w-100 mt-5">
       <div class="text-center mt-5 reveal">
         <h1 class="projects-section-title fw-bold mb-5">My <span class="text-secondary">projects</span><span class="orange-text">.</span></h1>
@@ -131,6 +135,7 @@
       </div>
     </section>
 
+    <!-- Contatti: card con link `mailto:` e `tel:` per azioni rapide -->
     <section class="w-100 mt-5 contact-section">
       <div class="contact-shell">
         <div class="contact-copy">
@@ -165,11 +170,18 @@
 <script>
 import { ref, onMounted, onBeforeUnmount } from "vue";
 
+// Import del dataset dei progetti. Il JSON è la fonte unica dei contenuti
+// mostrati nella sezione principale della home.
 import projectsData from '@/data/projects.json'
 
 export default {
   setup() {
+    // Lista affidata al template: ogni elemento contiene titolo, immagine,
+    // anno e descrizione della skill.
     const projects = ref([]);
+
+    // Array delle hard skills. È statico perché rappresenta una lista di
+    // competenze strutturate, non dipendente da dati esterni.
     const logos = [
       {
         title: "HTML",
@@ -225,7 +237,7 @@ export default {
         img: "/images/mysql-logo-pure.svg",
         year: "2024",
         description:
-          "Introduzione alla programmazione con Python. Fondamenti OOP, strutture dati, gestione file, librerie base e creazione di script per l'automazione.",
+          "Formazione pratica su MySQL applicata allo sviluppo web e alla gestione dei dati backend Esperienza nella progettazione di database, operazioni CRUD e utilizzo di query per applicazioni dinamiche.",
       },
       {
         title: "Github",
@@ -257,6 +269,8 @@ export default {
       },
     ];
 
+    // Mappa dei metadati specifici per progetto. Serve a arricchire la card
+    // con informazioni aggiuntive senza duplicare markup nel JSON.
     const projectMetaMap = {
       "RPG Project": [
         { label: "Tipo", value: "Gameplay" },
@@ -280,6 +294,7 @@ export default {
       ],
     };
 
+    // Normalizza progetti: body coerente, cover/gallery encoded, technologies e meta (projectMetaMap)
     const normalizeProjects = (data) => {
       const projectList = Array.isArray(data) ? data : [data];
 
@@ -297,10 +312,12 @@ export default {
 
     projects.value = normalizeProjects(projectsData);
 
+    // Stato delle logiche DOM: observer per le reveal e cleanup per l'hover.
     let observer = null;
     let hoverCleanup = null;
 
     onMounted(() => {
+      // Hero interactions: parallax via requestAnimationFrame, mousemove handlers, IntersectionObserver reveal
       const image = document.querySelector(".about-photo");
       const title = document.querySelector(".title-home");
       const trigger = document.querySelector(".hover-trigger");
@@ -369,6 +386,8 @@ export default {
     });
 
     onBeforeUnmount(() => {
+      // Pulizia delle listener e degli effetti animati per evitare memory leak
+      // quando il componente viene smontato.
       if (observer) {
         observer.disconnect();
       }

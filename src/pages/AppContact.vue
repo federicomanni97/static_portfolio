@@ -1,4 +1,5 @@
 <template>
+    <!-- Contact page: usa il componente `ContactForm` (v-model sui campi, invio via axios) -->
     <div>
         <h1 class="text-danger text-center py-4">Contact Me!</h1>
         <ContactForm/>
@@ -12,7 +13,6 @@ import ContactForm from '../components/ContactForm.vue'
         components: {
             ContactForm
         }
-        
     }
 </script>
 
