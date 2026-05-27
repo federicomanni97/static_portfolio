@@ -4,13 +4,15 @@
     <!-- Hero: 'About Me' — parallax foto (requestAnimationFrame), hover-trigger, badge -->
     <div class="position-relative about-section my-5 hover-trigger reveal">
       <div class="d-flex flex-column align-items-center">
-        <span class="hero-badge">Frontend Developer • Vue • React • UI</span>
-        <span class="text-black about-me opacity-75">About Me</span>
-        <span class="title-home text-center fw-bold py-3 text-responsive">Junior Front End Developer driven by curiosity and
-          <span class="text-secondary">code</span><span class="orange-text">.</span></span>
+        <span class="hero-badge">Frontend Developer • Vue • UI</span>
+        <span class="text-black about-me opacity-75">About Me:</span>
+        <span class="title-home text-center fw-bold py-3 text-responsive">
+          Junior FrontEnd Developer driven by curiosity
+          <span class="text-secondary">and code</span><span class="orange-text">.</span>
+        </span>
         <div class="about-photo absolute-img img_parallax img-responsive"></div>
         <p class="text-secondary text-center opacity-75 paragraph-width fs-6 absolute-paragraph">
-          Ciao, sono Federico Manni e sono un Junior Full Stack Web Developer.
+          Ciao, sono Federico Manni e sono un Junior Frontend Developer.
           Mi considero una persona socievole e comunicativa, con una naturale
           propensione al lavoro di squadra. Sono appassionato di tecnologia e mi
           entusiasma l'idea di contribuire a progetti innovativi, mentre
@@ -21,11 +23,17 @@
     </div>
 
     <!-- Hard Skills: render da array `logos` (img, title, year, description); layout con Bootstrap + SCSS -->
-    <div class="d-flex justify-content-center w-100">
-      <div class="row hard-skills-section w-100 reveal" style="max-width: 1200px">
+    <div class="hard-skills-wrapper w-100">
+      <div class="row hard-skills-section w-100 reveal">
         <div class="col-12 col-md-6 text-md-end text-start mb-4 mb-md-0 pt-5 border_skills">
           <div class="sticky-title">
-            <span class="fw-bold text-uppercase fs-2 pe-md-5 pe-0">Hard Skills<span class="orange-text">.</span></span>
+            <div class="hard-skills-underline reveal"></div>
+            <div class="hard-skills-dots reveal">
+              <span class="hard-skills-dot"></span>
+              <span class="hard-skills-dot"></span>
+              <span class="hard-skills-dot"></span>
+            </div>
+            <span class="fw-bold text-uppercase fs-2 pe-md-5 pe-0">Hard <span class="text-secondary">Skills</span><span class="orange-text">.</span></span>
             <p class="text-secondary pb-5 pe-md-5 pe-0 medium-font opacity-75">
               Competenze certificate acquisite fino ad oggi.
             </p>
@@ -186,7 +194,7 @@ export default {
       {
         title: "HTML",
         img: "/images/html-logo.png",
-        year: "Anno - 2024",
+        year: "2024",
         description:
           "Acquisita padronanza nella strutturazione semantica di pagine web, con particolare attenzione all’accessibilità e alla compatibilità cross-browser. Capacità di creare markup pulito, scalabile e ottimizzato per layout responsive.",
       },
@@ -419,6 +427,108 @@ export default {
   letter-spacing: -0.04em;
 }
 
+.hard-skills-underline {
+  width: 180px;
+  height: 4px;
+  margin: 1.15rem 0 0.85rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f97316 0%, #fb923c 45%, #f97316 100%);
+  box-shadow: 0 0 18px rgba(249, 115, 22, 0.18);
+  transform: scaleX(0) translateY(0);
+  transform-origin: left center;
+  opacity: 0;
+  transition: transform 0.7s ease-out, opacity 0.55s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.hard-skills-underline.reveal {
+  transform: scaleX(0) translateY(0);
+}
+
+.hard-skills-underline.reveal.is-visible {
+  transform: scaleX(1) translateY(-5px);
+  opacity: 1;
+  animation: hardSkillsFloat 4.5s ease-in-out infinite alternate;
+}
+
+.hard-skills-underline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgba(255,255,255,0.45), rgba(255,255,255,0), rgba(255,255,255,0.2));
+  opacity: 0.9;
+  transform: translateX(-120%);
+  animation: hardSkillsShine 2.2s ease-in-out infinite 0.8s;
+}
+
+.hard-skills-underline.reveal.is-visible {
+  transform: scaleX(1) translateY(-5px);
+  opacity: 1;
+  animation: hardSkillsFloat 4.5s ease-in-out infinite alternate;
+}
+
+.hard-skills-dots {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.55rem;
+  margin: 0.7rem 0 0.35rem;
+}
+
+.hard-skills-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #f97316;
+  opacity: 0.2;
+  transform: translateY(0);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.hard-skills-dots.reveal.is-visible .hard-skills-dot {
+  opacity: 0.75;
+}
+
+.hard-skills-dots.reveal.is-visible .hard-skills-dot:nth-child(1) {
+  animation: dotBounce 1.4s ease-in-out infinite 0.15s;
+}
+
+.hard-skills-dots.reveal.is-visible .hard-skills-dot:nth-child(2) {
+  animation: dotBounce 1.4s ease-in-out infinite 0.35s;
+}
+
+.hard-skills-dots.reveal.is-visible .hard-skills-dot:nth-child(3) {
+  animation: dotBounce 1.4s ease-in-out infinite 0.55s;
+}
+
+@keyframes dotBounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+}
+
+@keyframes hardSkillsFloat {
+  0% {
+    transform: scaleX(1) translateY(0);
+  }
+  100% {
+    transform: scaleX(1) translateY(-5px);
+  }
+}
+
+@keyframes hardSkillsShine {
+  0% { transform: translateX(-120%); }
+  50% { transform: translateX(120%); }
+  100% { transform: translateX(240%); }
+}
+
 .projects-list {
   width: 100%;
   display: flex;
@@ -442,7 +552,9 @@ export default {
   padding: 1rem;
   border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: 24px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98));
+  background:
+    radial-gradient(circle at top left, rgba(249, 115, 22, 0.06), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98));
   box-shadow: 0 20px 45px rgba(15, 23, 42, 0.06);
 }
 
@@ -594,6 +706,15 @@ export default {
     linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98));
   border: 1px solid rgba(15, 23, 42, 0.06);
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+}
+
+.border_skills {
+  padding: 1.5rem;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at top right, rgba(249, 115, 22, 0.14), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98));
+  border: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .hero-badge {
@@ -785,6 +906,17 @@ export default {
   .contact-shell {
     grid-template-columns: 1fr;
     padding: 1.25rem;
+  }
+}
+
+.word-gap {
+  margin-left: 0.9rem;
+  display: inline-block;
+}
+
+@media (max-width: 767px) {
+  .word-gap {
+    margin-left: 0.50rem;
   }
 }
 
