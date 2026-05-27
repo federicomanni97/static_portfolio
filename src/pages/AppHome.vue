@@ -529,6 +529,15 @@ export default {
   100% { transform: translateX(240%); }
 }
 
+.sticky-title {
+  position: sticky;
+  top: 5.5rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 .projects-list {
   width: 100%;
   display: flex;
