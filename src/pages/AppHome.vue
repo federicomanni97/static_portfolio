@@ -10,7 +10,7 @@
           Junior FrontEnd Developer driven by curiosity
           <span class="text-secondary">and code</span><span class="orange-text">.</span>
         </span>
-        <div class="about-photo absolute-img img_parallax img-responsive"></div>
+        <!-- <div class="about-photo absolute-img img_parallax img-responsive"></div> -->
         <p class="text-secondary text-center opacity-75 paragraph-width fs-6 absolute-paragraph">
           Ciao, sono Federico Manni e sono un Junior Frontend Developer.
           Mi considero una persona socievole e comunicativa, con una naturale
