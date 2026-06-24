@@ -12,12 +12,7 @@
         </span>
         <!-- <div class="about-photo absolute-img img_parallax img-responsive"></div> -->
         <p class="text-secondary text-center opacity-75 paragraph-width fs-6 absolute-paragraph">
-          Ciao, sono Federico Manni e sono un Junior Frontend Developer.
-          Mi considero una persona socievole e comunicativa, con una naturale
-          propensione al lavoro di squadra. Sono appassionato di tecnologia e mi
-          entusiasma l'idea di contribuire a progetti innovativi, mentre
-          continuo a cercare nuove opportunità per crescere sia
-          professionalmente che personalmente.
+          Che dire di me, sono un ragazzo che non si tira mai indietro davanti ad una sfida, sono volenteroso di fare e imparare sempre cose nuove, amo viaggiare e scoprire posti nuovi. Mi piace interagire con persone che hanno una mentalità aperta e desiderano mettersi in gioco tanto quanto lo desidero io.
         </p>
       </div>
     </div>
@@ -75,7 +70,8 @@
                 <img
                   :src="project.cover"
                   :alt="project.title"
-                  class="project-cover"
+                  class="project-cover cursor-pointer"
+                  @click="openLightbox(project)"
                 />
               </div>
 
@@ -173,6 +169,52 @@
       </div>
     </section>
   </div>
+
+  <!-- Lightbox Modal -->
+  <div v-if="lightboxOpen" class="lightbox-overlay" @click="closeLightbox">
+    <div class="lightbox-container" @click.stop>
+      <!-- Close button -->
+      <button class="close-btn" @click="closeLightbox" aria-label="Chiudi">
+        ✕
+      </button>
+
+      <!-- Main image -->
+      <div 
+        class="lightbox-image-wrapper"
+        @touchstart="handleTouchStart"
+        @touchend="handleTouchEnd"
+      >
+        <img 
+          :src="currentLightboxProject?.gallery[currentImageIndex] || ''" 
+          :alt="`${currentLightboxProject?.title} - ${currentImageIndex + 1}`"
+          class="lightbox-image"
+        >
+      </div>
+
+      <!-- Navigation arrows -->
+      <button 
+        v-if="currentLightboxProject?.gallery.length > 1"
+        class="nav-btn prev-btn" 
+        @click="prevImage"
+        aria-label="Immagine precedente"
+      >
+        ❮
+      </button>
+      <button 
+        v-if="currentLightboxProject?.gallery.length > 1"
+        class="nav-btn next-btn" 
+        @click="nextImage"
+        aria-label="Immagine successiva"
+      >
+        ❯
+      </button>
+
+      <!-- Image counter -->
+      <div v-if="currentLightboxProject?.gallery.length > 1" class="image-counter">
+        {{ currentImageIndex + 1 }} / {{ currentLightboxProject?.gallery.length }}
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -187,6 +229,11 @@ export default {
     // Lista affidata al template: ogni elemento contiene titolo, immagine,
     // anno e descrizione della skill.
     const projects = ref([]);
+    const lightboxOpen = ref(false);
+    const currentLightboxProject = ref(null);
+    const currentImageIndex = ref(0);
+    const touchStartX = ref(0);
+    const touchEndX = ref(0);
 
     // Array delle hard skills. È statico perché rappresenta una lista di
     // competenze strutturate, non dipendente da dati esterni.
@@ -405,9 +452,83 @@ export default {
       }
     });
 
+    // Lightbox methods
+    const openLightbox = (project) => {
+      currentLightboxProject.value = project;
+      currentImageIndex.value = 0;
+      lightboxOpen.value = true;
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+      document.addEventListener('keydown', handleKeyboard);
+    };
+
+    const closeLightbox = () => {
+      lightboxOpen.value = false;
+      document.body.style.overflow = 'auto';
+      document.documentElement.style.overflow = 'auto';
+      document.removeEventListener('keydown', handleKeyboard);
+    };
+
+    const nextImage = () => {
+      const galleryLength = currentLightboxProject.value?.gallery.length || 0;
+      if (currentImageIndex.value < galleryLength - 1) {
+        currentImageIndex.value++;
+      } else {
+        currentImageIndex.value = 0;
+      }
+    };
+
+    const prevImage = () => {
+      const galleryLength = currentLightboxProject.value?.gallery.length || 0;
+      if (currentImageIndex.value > 0) {
+        currentImageIndex.value--;
+      } else {
+        currentImageIndex.value = galleryLength - 1;
+      }
+    };
+
+    const handleTouchStart = (e) => {
+      touchStartX.value = e.changedTouches[0].screenX;
+    };
+
+    const handleTouchEnd = (e) => {
+      touchEndX.value = e.changedTouches[0].screenX;
+      handleSwipe();
+    };
+
+    const handleSwipe = () => {
+      const diff = touchStartX.value - touchEndX.value;
+      const threshold = 50;
+
+      if (Math.abs(diff) > threshold) {
+        if (diff > 0) {
+          nextImage();
+        } else {
+          prevImage();
+        }
+      }
+    };
+
+    const handleKeyboard = (e) => {
+      if (!lightboxOpen.value) return;
+      
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+      if (e.key === 'Escape') closeLightbox();
+    };
+
     return {
       logos,
       projects,
+      lightboxOpen,
+      currentLightboxProject,
+      currentImageIndex,
+      openLightbox,
+      closeLightbox,
+      nextImage,
+      prevImage,
+      handleTouchStart,
+      handleTouchEnd,
     };
   },
 };
@@ -926,6 +1047,192 @@ export default {
 @media (max-width: 767px) {
   .word-gap {
     margin-left: 0.50rem;
+  }
+}
+
+/* Lightbox Styles */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lightbox-container {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.lightbox-image-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: pan-y;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: #f97316;
+  font-size: 32px;
+  cursor: pointer;
+  z-index: 1001;
+  transition: all 0.2s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.close-btn:hover {
+  background: rgba(249, 115, 22, 0.1);
+  color: #dc3545;
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #f97316;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 8px 12px;
+  z-index: 1001;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn:hover {
+  background: rgba(249, 115, 22, 0.1);
+  color: #dc3545;
+}
+
+.nav-btn.prev-btn {
+  left: 20px;
+}
+
+.nav-btn.next-btn {
+  right: 20px;
+}
+
+.nav-btn.next-btn {
+  right: 24px;
+}
+
+.image-counter {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(249, 115, 22, 0.08);
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  padding: 8px 16px;
+  border-radius: 4px;
+  z-index: 1001;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  .lightbox-container {
+    width: 98%;
+    height: 95vh;
+    border-radius: 16px;
+  }
+
+  .nav-btn {
+    padding: 12px 14px;
+    font-size: 18px;
+    border-radius: 8px;
+  }
+
+  .nav-btn.prev-btn {
+    left: 12px;
+  }
+
+  .nav-btn.next-btn {
+    right: 12px;
+  }
+
+  .close-btn {
+    top: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    font-size: 24px;
+    border-radius: 8px;
+  }
+
+  .image-counter {
+    font-size: 12px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    bottom: 16px;
   }
 }
 
