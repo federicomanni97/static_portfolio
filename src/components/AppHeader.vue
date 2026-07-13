@@ -17,7 +17,7 @@
         <div class="header-actions d-flex align-items-center">
           <ul class="d-flex list-unstyled gap-3 mb-0">
             <li>
-              <a href="https://www.linkedin.com/in/tuo-profilo" target="_blank" class="text-dark">
+              <a href="https://www.linkedin.com/in/federicomanni2909/" target="_blank" class="text-dark">
                 <i class="fa-brands fa-linkedin fs-5 text-secondary"></i>
               </a>
             </li>
@@ -32,7 +32,7 @@
               </a>
             </li>
             <li>
-              <a href="#" class="text-dark">
+              <a href="https://www.instagram.com/fedmann_/" class="text-dark">
                 <i class="fa-brands fa-instagram fs-5 text-secondary"></i>
               </a>
             </li>

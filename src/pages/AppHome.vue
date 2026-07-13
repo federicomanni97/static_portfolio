@@ -10,7 +10,7 @@
           Junior FrontEnd Developer driven by curiosity
           <span class="text-secondary">and code</span><span class="orange-text">.</span>
         </span>
-        <!-- <div class="about-photo absolute-img img_parallax img-responsive"></div> -->
+        <div class="about-photo absolute-img img_parallax img-responsive"></div>
         <p class="text-secondary text-center opacity-75 paragraph-width fs-6 absolute-paragraph">
           Che dire di me, sono un ragazzo che non si tira mai indietro davanti ad una sfida, sono volenteroso di fare e imparare sempre cose nuove, amo viaggiare e scoprire posti nuovi. Mi piace interagire con persone che hanno una mentalità aperta e desiderano mettersi in gioco tanto quanto lo desidero io.
         </p>
