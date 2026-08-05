@@ -4,13 +4,13 @@
     <!-- Hero: 'About Me' — parallax foto (requestAnimationFrame), hover-trigger, badge -->
     <div class="position-relative about-section my-5 hover-trigger reveal">
       <div class="d-flex flex-column align-items-center">
-        <span class="hero-badge">Frontend Developer • Vue • UI</span>
+        <span class="hero-badge">Junior Developer </span>
         <span class="text-black about-me opacity-75">About Me:</span>
         <span class="title-home text-center fw-bold py-3 text-responsive">
-          Junior FrontEnd Developer driven by curiosity
+          Junior Fullstack Developer driven by curiosity
           <span class="text-secondary">and code</span><span class="orange-text">.</span>
         </span>
-        <div class="about-photo absolute-img img_parallax img-responsive"></div>
+        <!-- <div class="about-photo absolute-img img_parallax img-responsive"></div> -->
         <p class="text-secondary text-center opacity-75 paragraph-width fs-6 absolute-paragraph">
           Che dire di me, sono un ragazzo che non si tira mai indietro davanti ad una sfida, sono volenteroso di fare e imparare sempre cose nuove, amo viaggiare e scoprire posti nuovi. Mi piace interagire con persone che hanno una mentalità aperta e desiderano mettersi in gioco tanto quanto lo desidero io.
         </p>
